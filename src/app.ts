@@ -4,6 +4,7 @@ import { globalErrorHandler } from './middlewares/errorMiddleware';
 
 
 import userRouter from './routes/userRoute';
+import levelRouter from './routes/levelRoute';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/levels', levelRouter);
 
 app.use(globalErrorHandler);
 

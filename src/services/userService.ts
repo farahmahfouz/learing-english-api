@@ -18,7 +18,7 @@ export interface LoginInput {
 
 export const signupUser = async (input: SignupInput) => {
     const user = await User.create({
-        name: input.name.trim(),
+        name: input.name,
         email: input.email.trim().toLowerCase(),
         password: input.password,
     });
@@ -27,7 +27,7 @@ export const signupUser = async (input: SignupInput) => {
 
 export const loginUser = async (input: LoginInput) => {
     const { email, password } = input;
-    const user = await User.findOne({ email: email.trim().toLowerCase() }).select('+password');
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user || !(await (user as unknown as UserWithPasswordCheck).correctPassword(password))) {
         throw new AppError('Incorrect email or password', 401);

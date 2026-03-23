@@ -39,7 +39,7 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
     }
 };
 
-export const protectTo = (...roles: string[]) => {
+export const restrictTo = (...roles: string[]) => {
     return (req: AuthRequest, res: Response, next: NextFunction) => {
         if (!req.user || !roles.includes(req.user.role)) {
             return next(new AppError('You are not authorized to access this resource', 403));

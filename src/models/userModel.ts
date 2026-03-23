@@ -24,10 +24,11 @@ const userSchema = new mongoose.Schema({
         minlength: [8, 'Password must be at least 8 characters long'],
         select: false,
     },
-    level: {
+    currentLevel: {
         type: Number,
         default: 1
     },
+    isSubScribed: Boolean,
     progress: {
         type: Number,
         default: 0,
