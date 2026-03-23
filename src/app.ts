@@ -1,12 +1,21 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response } from 'express';
+import cookieParser from 'cookie-parser';
+import { globalErrorHandler } from './middlewares/errorMiddleware';
+
+
+import userRouter from './routes/userRoute';
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("Hello Quiz API!");
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello Quiz API!');
 });
 
+app.use('/api/v1/users', userRouter);
 
-export { app }; 
+app.use(globalErrorHandler);
+
+export { app };
