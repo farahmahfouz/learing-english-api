@@ -21,7 +21,7 @@ export const getAllLevels = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getLevelById = catchAsync(async (req: Request, res: Response) => {
-     const level = await getLevelByIdService(req.params.id as string);
+    const level = await getLevelByIdService(req.params.id as string);
     if (!level) throw new AppError('Level not found', 404);
     res.status(200).json({
         status: 'success',

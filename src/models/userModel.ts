@@ -26,14 +26,17 @@ const userSchema = new mongoose.Schema({
     },
     currentLevel: {
         type: Number,
-        default: 1
+        default: 0
     },
     isSubScribed: Boolean,
     progress: {
         type: Number,
         default: 0,
     },
-
+    hasCompletedPlacementTest: {
+        type: Boolean,
+        default: false,
+    },
     completedLevels: [Number],
 }, { timestamps: true });
 

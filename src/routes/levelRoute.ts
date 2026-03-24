@@ -1,4 +1,3 @@
-// routes/levelRoutes.ts
 import express from 'express';
 import { createLevel, getAllLevels, getLevelById } from '../controllers/levelController';
 import { auth, restrictTo } from '../middlewares/authMiddleware';

@@ -35,3 +35,9 @@ export const loginUser = async (input: LoginInput) => {
 
     return user;
 };
+
+export const getUser = async (id: string) => {
+    const user = await User.findById(id);
+    if (!user) throw new AppError('No User Found', 404);
+    return user;
+};

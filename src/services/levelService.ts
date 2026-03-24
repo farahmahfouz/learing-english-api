@@ -6,7 +6,7 @@ export const createLevelService = async (data: object) => {
 };
 
 export const getAllLevelsService = async () => {
-    const levels = await Level.find().select('levelNumber title description');
+    const levels = await Level.find();
     return levels;
 };
 
