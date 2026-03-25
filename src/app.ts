@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute';
 import levelRouter from './routes/levelRoute';
 import progressRouter from './routes/progressRoute';
 import placementRoutes from './routes/placementRoute';
+import shadowingRoutes from './routes/shadowingRoute';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/levels', levelRouter);
 app.use('/api/v1/progress', progressRouter);
 app.use('/api/v1/placement-test', placementRoutes);
+app.use('/api/v1/shadowing', shadowingRoutes);
 
 app.use(globalErrorHandler);
 
