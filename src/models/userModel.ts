@@ -37,7 +37,12 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    completedLevels: [Number],
+    completedLevels: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Level'
+        }
+    ]
 }, { timestamps: true });
 
 // Mongoose 9: pre('save') passes SaveOptions as 2nd arg, not next(). Use async without next.

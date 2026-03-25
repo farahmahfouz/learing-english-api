@@ -65,7 +65,11 @@ export const submitPlacementTestService = async ({
         }
     }
 
-    await User.findByIdAndUpdate(userId, { currentLevel: assignedLevel, hasCompletedPlacementTest: true }, { new: true, runValidators: true });
+    await User.findByIdAndUpdate(userId, { currentLevel: assignedLevel, hasCompletedPlacementTest: true },
+        {
+            returnDocument: 'after',
+            runValidators: true,
+        });
 
     return {
         assignedLevel,
