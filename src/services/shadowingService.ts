@@ -1,5 +1,6 @@
 import Story from '../models/storyModel';
 import ShadowingSession from '../models/shadowingSessionModel';
+import { maybeIssueCompletionCertificateService } from './certificateService';
 
 export const getAllStoriesService = async () => {
     const stories = await Story.find().sort({ order: 1 });
@@ -20,6 +21,12 @@ export const submitShadowingService = async ({
         { selfEvaluation, completedAt: new Date() },
         { upsert: true, new: true }
     );
+
+    if (selfEvaluation === 'correct') {
+        // If the user completed all shadowing stories, auto-issue a certificate.
+        await maybeIssueCompletionCertificateService({ userId, course: 'shadowing' });
+    }
+
     return session;
 };
 

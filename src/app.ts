@@ -8,6 +8,7 @@ import levelRouter from './routes/levelRoute';
 import progressRouter from './routes/progressRoute';
 import placementRoutes from './routes/placementRoute';
 import shadowingRoutes from './routes/shadowingRoute';
+import certificateRoutes from './routes/certificateRoute';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api/v1/levels', levelRouter);
 app.use('/api/v1/progress', progressRouter);
 app.use('/api/v1/placement-test', placementRoutes);
 app.use('/api/v1/shadowing', shadowingRoutes);
+app.use('/api/v1/certificates', certificateRoutes);
 
 app.use(globalErrorHandler);
 

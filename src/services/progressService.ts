@@ -1,6 +1,7 @@
 import Progress from '../models/progressModel';
 import User from '../models/userModel';
 import Level from '../models/levelModel';
+import { maybeIssueCompletionCertificateService } from './certificateService';
 
 interface UpdateProgressInput {
     userId: string;
@@ -74,6 +75,9 @@ export const updateProgressService = async ({
         await User.findByIdAndUpdate(userId, {
             $addToSet: { completedLevels: levelId },
         });
+
+        // If the user completed all course levels, auto-issue a certificate.
+        await maybeIssueCompletionCertificateService({ userId, course: 'levels' });
     }
 
     return progress;
